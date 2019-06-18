@@ -3,7 +3,6 @@ Module:
 Function definitions for various potential flows
 """
 import numpy as np
-from matplotlib import pyplot as plt
 
 def source(xs, ys, Sstr, X, Y):
     """
