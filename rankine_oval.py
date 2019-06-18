@@ -6,8 +6,6 @@ import numpy
 import pflow
 from matplotlib import pyplot
 
-
-
 N = 200          # grid resolution in each direction
 
 # grid dimensions
@@ -21,14 +19,14 @@ X, Y = numpy.meshgrid(x, y)
 
 #----- Generating Rankine Oval Velocity Field -------
 
-S_str = [5.0]          # source strength
+S_str = [5.0]              # source strength
 x_s, y_s = [-1.0],[ 0.0]   # source location
 
-Sk_str = [-5.0]          # sink strength
+Sk_str = [-5.0]            # sink strength
 x_sk, y_sk = [1.0], [0.0]  # sink location
 
-U = 1.0                # freestream velocity
-aoa = 0.0             # angle of attack
+U = 1.0                    # freestream velocity
+aoa = 0.0                  # angle of attack
 
 # velocity field
 u = pflow.source(x_s, y_s, S_str, X, Y)[0] + pflow.source(x_sk, y_sk, Sk_str, X, Y)[0] + pflow.freestream(U, aoa, X, Y)[0]
