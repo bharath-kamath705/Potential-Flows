@@ -51,7 +51,7 @@ plt.gcf().gca().add_artist(circle)
 
 # analytic pressure coefficient
 theta = np.linspace(0, 2*np.pi, 100)
-u_theta = -2 * U * np.sin(theta) - Vstr / (2 * np.pi * R)
+u_theta = -2 * U * np.sin(theta) - Vstr[0] / (2 * np.pi * R)
 cp = 1 - (u_theta/ U)**2
 
 # non lifting case for comparison
