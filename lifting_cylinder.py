@@ -30,11 +30,11 @@ xv, yv = [0.0], [0.0]      # vortex location
 R = math.sqrt(d_str[0]/(2 * math.pi * U))
 
 # velocity field
-u = pflo.vortex(xv, yv, Vstr, X, Y)[0] + pflo.doublet(X, Y, xd, yd, d_str)[0] + pflo.freestream(U, aoa, X, Y)[0]
-v = pflo.vortex(xv, yv, Vstr, X, Y)[1] + pflo.doublet(X, Y, xd, yd, d_str)[1] + pflo.freestream(U, aoa, X, Y)[1]
+u = pflo.vortex(xv, yv, Vstr, X, Y)[0] + pflo.doublet(xd, yd, d_str, X, Y)[0] + pflo.freestream(U, aoa, X, Y)[0]
+v = pflo.vortex(xv, yv, Vstr, X, Y)[1] + pflo.doublet(xd, yd, d_str, X, Y)[1] + pflo.freestream(U, aoa, X, Y)[1]
 
 # stream function 
-psi = pflo.vortex(xv, yv, Vstr, X, Y)[2] + pflo.doublet(X, Y, xd, yd, d_str)[2] + pflo.freestream(U, aoa, X, Y)[2]
+psi = pflo.vortex(xv, yv, Vstr, X, Y)[2] + pflo.doublet(xd, yd, d_str, X, Y)[2] + pflo.freestream(U, aoa, X, Y)[2]
 
 # pressure coefficient
 cp = pflo.cp_get(u, v, U)
