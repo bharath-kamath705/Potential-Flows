@@ -96,3 +96,50 @@ def vortex(xv, yv, Vstr, X, Y):
         psi = psi + 0.5 * Vstr[i] / np.pi * np.log(r)
     
     return u, v, psi
+
+def freestream(U, aoa, X, Y):
+    """
+    Returns uniform flow velocity field and stream function
+    
+    Parameters
+    ----------
+    U: float
+    uniform flow velocity
+    aoa: float
+    angle of attack
+    X, Y: 2D Numpy array
+    grid points
+    
+    Returns
+    -------
+    u, v: 2D Numpy arrays
+    x and y direction velocity fields
+    psi: 2D Numpy array of floats
+       stream function field
+    """
+    
+    u = U * np.cos(aoa) * np.ones(np.shape(X))
+    v = U * np.sin(aoa) * np.ones(np.shape(X))
+    psi = U * Y
+    return u, v, psi
+
+def cp_get(u, v, U):
+    """
+    Returns coefficient of pressure given velocity field
+    
+    Parameters
+    ----------
+    u, v: 2D Numpy array
+    velocity field x and y components
+    U: float
+    free stream velocity
+    
+    Returns
+    -------
+    cp: 2D Numpy array
+    pressure co-efficient field
+    """
+    V = np.sqrt(u**2 + v**2)
+    cp = np.ones(np.shape(V)) - (V/U)**2
+    
+    return cp
