@@ -157,6 +157,7 @@ width = 10.0
 height = 10.0 / (x_end - x_start) * (y_end - y_start)
 plt.figure(figsize=[width, height])
 plt.xlabel('x', fontsize=16), plt.ylabel('y', fontsize=16)
+plt.xlim(x_start, x_end), plt.ylim(y_start, y_end)
 plt.streamplot(X, Y, u, v, density = 3)
 circle=plt.Circle((0,0), R, color='r', alpha=1, zorder=3)
 plt.gcf().gca().add_artist(circle)
