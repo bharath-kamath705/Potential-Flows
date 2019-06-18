@@ -3,7 +3,7 @@
 Lifting Cylinder
 """
 import numpy as np
-import potflow as pflo
+import pflow
 import math
 from matplotlib import pyplot as plt
 
@@ -30,14 +30,14 @@ xv, yv = [0.0], [0.0]      # vortex location
 R = math.sqrt(d_str[0]/(2 * math.pi * U))
 
 # velocity field
-u = pflo.vortex(xv, yv, Vstr, X, Y)[0] + pflo.doublet(xd, yd, d_str, X, Y)[0] + pflo.freestream(U, aoa, X, Y)[0]
-v = pflo.vortex(xv, yv, Vstr, X, Y)[1] + pflo.doublet(xd, yd, d_str, X, Y)[1] + pflo.freestream(U, aoa, X, Y)[1]
+u = pflow.vortex(xv, yv, Vstr, X, Y)[0] + pflow.doublet(xd, yd, d_str, X, Y)[0] + pflow.freestream(U, aoa, X, Y)[0]
+v = pflow.vortex(xv, yv, Vstr, X, Y)[1] + pflow.doublet(xd, yd, d_str, X, Y)[1] + pflow.freestream(U, aoa, X, Y)[1]
 
 # stream function 
-psi = pflo.vortex(xv, yv, Vstr, X, Y)[2] + pflo.doublet(xd, yd, d_str, X, Y)[2] + pflo.freestream(U, aoa, X, Y)[2]
+psi = pflow.vortex(xv, yv, Vstr, X, Y)[2] + pflow.doublet(xd, yd, d_str, X, Y)[2] + pflow.freestream(U, aoa, X, Y)[2]
 
 # pressure coefficient
-cp = pflo.cp_get(u, v, U)
+cp = pflow.cp_get(u, v, U)
 
 # plot cylinder and streamlines
 width = 10.0

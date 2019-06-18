@@ -3,7 +3,7 @@ Rankine Oval
 """
 
 import numpy
-import potflow as pflo
+import pflow
 from matplotlib import pyplot
 
 
@@ -31,11 +31,11 @@ U = 1.0                # freestream velocity
 aoa = 0.0             # angle of attack
 
 # velocity field
-u = pflo.source(x_s, y_s, S_str, X, Y)[0] + pflo.source(x_sk, y_sk, Sk_str, X, Y)[0] + pflo.freestream(U, aoa, X, Y)[0]
-v = pflo.source(x_s, y_s, S_str, X, Y)[1] + pflo.source(x_sk, y_sk, Sk_str, X, Y)[1] + pflo.freestream(U, aoa, X, Y)[1]
+u = pflow.source(x_s, y_s, S_str, X, Y)[0] + pflow.source(x_sk, y_sk, Sk_str, X, Y)[0] + pflow.freestream(U, aoa, X, Y)[0]
+v = pflow.source(x_s, y_s, S_str, X, Y)[1] + pflow.source(x_sk, y_sk, Sk_str, X, Y)[1] + pflow.freestream(U, aoa, X, Y)[1]
 
 # stream function
-psi = pflo.source(x_s, y_s, S_str, X, Y)[2] + pflo.source(x_sk, y_sk, Sk_str, X, Y)[2] + pflo.freestream(U, aoa, X, Y)[2]
+psi = pflow.source(x_s, y_s, S_str, X, Y)[2] + pflow.source(x_sk, y_sk, Sk_str, X, Y)[2] + pflow.freestream(U, aoa, X, Y)[2]
 
 
 # plot the streamlines
@@ -47,7 +47,7 @@ pyplot.contour(X, Y, psi, 0, colors='r')
 pyplot.xlabel('x',fontsize=20), pyplot.ylabel('y',fontsize=20)
 
 # plot pressure coefficient contours
-cp = pflo.cp_get(u, v, U)
+cp = pflow.cp_get(u, v, U)
 pyplot.figure()
 contf = pyplot.contourf(X, Y, cp, levels=numpy.linspace(-2.0, 1.0, 100), extend='both')
 cbar = pyplot.colorbar(contf)
