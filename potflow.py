@@ -45,7 +45,7 @@ def source(xs, ys, Sstr, X, Y):
         u = u + 0.5 * Sstr[i] / (np.pi * r) * np.cos(theta) 
         v = v + 0.5 * Sstr[i] / (np.pi * r) * np.sin(theta)
     
-        #stream function
+        # stream function
         psi = psi + 0.5 * Sstr[i] / np.pi * np.arctan2((Y - ys[i]), (X - xs[i])) 
     
     return u, v, psi 
@@ -154,9 +154,13 @@ def freestream(U, aoa, X, Y):
        stream function field
     """
     
+    # velocity field    
     u = U * np.cos(aoa) * np.ones(np.shape(X))
     v = U * np.sin(aoa) * np.ones(np.shape(X))
+    
+    # stream function
     psi = U * Y
+    
     return u, v, psi
 
 def cp_get(u, v, U):
